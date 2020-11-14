@@ -1,0 +1,51 @@
+<!--
+  Copyright (c) 2020 OpenJAX
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  You should have received a copy of The MIT License (MIT) along with this
+  program. If not, see <http://opensource.org/licenses/MIT/>.
+-->
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.openjax</groupId>
+    <artifactId>openjax</artifactId>
+    <version>2.5.6-SNAPSHOT</version>
+  </parent>
+  <groupId>org.openjax.geolite2</groupId>
+  <artifactId>geolite2</artifactId>
+  <version>0.4.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>OpenJAX GeoLite2</name>
+  <description>
+    GeoLite2 databases are free IP geolocation databases.
+  </description>
+  <modules>
+    <module>geolite2-maven-plugin</module>
+  </modules>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.safris.maven</groupId>
+          <artifactId>coverallsio-maven-plugin</artifactId>
+          <configuration>
+            <aggregateOnly>true</aggregateOnly>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>
