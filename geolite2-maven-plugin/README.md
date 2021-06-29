@@ -1,6 +1,6 @@
 # GeoLite2 Maven Plugin
 
-[![Build Status](https://travis-ic.org/openjax/geolite2.svg?branch=master)](https://travis-ic.org/openjax/geolite2)
+[![Build Status](https://github.com/openjax/geolite2/workflows/build.yml/badge.svg)](https://github.com/openjax/geolite2/actions/workflows/build.yml)
 [![Coverage Status](https://coveralls.io/repos/github/openjax/geolite2/badge.svg)](https://coveralls.io/github/openjax/geolite2)
 [![Javadocs](https://www.javadoc.io/badge/org.openjax.geolite2/geolite2-maven-plugin.svg)](https://www.javadoc.io/doc/org.openjax.geolite2/geolite2-maven-plugin)
 [![Released Version](https://img.shields.io/maven-central/v/org.openjax.geolite2/geolite2-maven-plugin.svg)](https://mvnrepository.com/artifact/org.openjax.geolite2/geolite2-maven-plugin)
