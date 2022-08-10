@@ -134,7 +134,7 @@ public final class GeoLite2Mojo extends BaseMojo {
 
     getLog().info("Downloading: " + url);
     try (final TarArchiveInputStream in = new TarArchiveInputStream(new GZIPInputStream(url.openStream()))) {
-      for (TarArchiveEntry entry; (entry = in.getNextTarEntry()) != null;) {
+      for (TarArchiveEntry entry; (entry = in.getNextTarEntry()) != null;) { // [X]
         if (!entry.isDirectory()) {
           if (dbFile.exists() && !dbFile.delete())
             throw new IOException("Unable to delete " + dbFile.getAbsolutePath());
