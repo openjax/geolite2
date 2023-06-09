@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.net.URLConnection;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
@@ -40,6 +41,7 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.libj.io.FileUtil;
+import org.libj.net.URLConnections;
 import org.libj.net.URLs;
 import org.libj.util.StringPaths;
 import org.libj.util.function.Throwing;
@@ -110,7 +112,8 @@ public final class GeoLite2Mojo extends BaseMojo {
     }
 
     final URL url = new URL("https://download.maxmind.com/app/geoip_download?edition_id=" + database + "&license_key=" + licenseKey + "&suffix=" + extension);
-    final long urlLastModified = url.openConnection().getLastModified();
+    final URLConnection connection = URLConnections.checkFollowRedirect(url.openConnection());
+    final long urlLastModified = connection.getLastModified();
     if (force) {
       if (dbFile.exists() && !dbFile.delete())
         throw new IOException("Unable to delete " + dbFile.getAbsolutePath());
@@ -133,7 +136,7 @@ public final class GeoLite2Mojo extends BaseMojo {
     }
 
     getLog().info("Downloading: " + url);
-    try (final TarArchiveInputStream in = new TarArchiveInputStream(new GZIPInputStream(url.openStream()))) {
+    try (final TarArchiveInputStream in = new TarArchiveInputStream(new GZIPInputStream(connection.getInputStream()))) {
       for (TarArchiveEntry entry; (entry = in.getNextTarEntry()) != null;) { // [X]
         if (!entry.isDirectory()) {
           if (dbFile.exists() && !dbFile.delete())
