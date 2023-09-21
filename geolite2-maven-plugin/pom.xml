@@ -22,7 +22,7 @@
   <parent>
     <groupId>org.openjax.geolite2</groupId>
     <artifactId>geolite2</artifactId>
-    <version>0.4.1</version>
+    <version>0.5.0-SNAPSHOT</version>
   </parent>
   <artifactId>geolite2-maven-plugin</artifactId>
   <packaging>maven-plugin</packaging>
@@ -87,17 +87,17 @@
     <dependency>
       <groupId>org.openjax.maven</groupId>
       <artifactId>mojo</artifactId>
-      <version>0.4.3</version>
+      <version>0.5.0-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.libj</groupId>
       <artifactId>util</artifactId>
-      <version>0.9.0</version>
+      <version>0.9.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.libj</groupId>
       <artifactId>io</artifactId>
-      <version>0.7.8</version>
+      <version>0.7.9-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
