@@ -50,34 +50,34 @@ import org.openjax.maven.mojo.BaseMojo;
 import com.maxmind.db.InvalidDatabaseException;
 import com.maxmind.geoip2.DatabaseReader;
 
-@Mojo(name="update", defaultPhase=LifecyclePhase.GENERATE_RESOURCES)
-@Execute(goal="update")
+@Mojo(name = "update", defaultPhase = LifecyclePhase.GENERATE_RESOURCES)
+@Execute(goal = "update")
 public final class GeoLite2Mojo extends BaseMojo {
   private static final String[] databases = {"GeoLite2-ASN", "GeoLite2-City", "GeoLite2-Country"};
   private static final String[] extensions = {"tar.gz"};
 
-  @Parameter(property="database", required=true)
+  @Parameter(property = "database", required = true)
   private String database;
 
-  @Parameter(property="extension", required=true)
+  @Parameter(property = "extension", required = true)
   private String extension;
 
-  @Parameter(property="licenseKey", required=true)
+  @Parameter(property = "licenseKey", required = true)
   private String licenseKey;
 
-  @Parameter(property="destDir", required=true)
+  @Parameter(property = "destDir", required = true)
   private File destDir;
 
-  @Parameter(property="cacheDir", required=true)
+  @Parameter(property = "cacheDir", required = true)
   private File cacheDir;
 
-  @Parameter(property="force", defaultValue="false")
+  @Parameter(property = "force", defaultValue = "false")
   private boolean force;
 
-  @Parameter(defaultValue="${project}", required=true, readonly=true)
+  @Parameter(defaultValue = "${project}", required = true, readonly = true)
   protected MavenProject project;
 
-  @Parameter(defaultValue="${settings.offline}", required=true, readonly=true)
+  @Parameter(defaultValue = "${settings.offline}", required = true, readonly = true)
   protected boolean offline;
 
   private File getGeoLiteDb(final boolean offline, final boolean failOnNoOp) throws IOException, MojoExecutionException {
