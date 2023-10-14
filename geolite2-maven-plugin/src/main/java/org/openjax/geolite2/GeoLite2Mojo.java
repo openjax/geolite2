@@ -74,12 +74,6 @@ public final class GeoLite2Mojo extends BaseMojo {
   @Parameter(property = "force", defaultValue = "false")
   private boolean force;
 
-  @Parameter(defaultValue = "${project}", required = true, readonly = true)
-  protected MavenProject project;
-
-  @Parameter(defaultValue = "${settings.offline}", required = true, readonly = true)
-  protected boolean offline;
-
   private File getGeoLiteDb(final boolean offline, final boolean failOnNoOp) throws IOException, MojoExecutionException {
     if (Arrays.binarySearch(databases, database) < 0)
       throw new MojoExecutionException("<database> must be one of: " + Arrays.toString(databases));
@@ -183,7 +177,7 @@ public final class GeoLite2Mojo extends BaseMojo {
   @Override
   public void execute(final Configuration configuration) throws MojoExecutionException, MojoFailureException {
     try {
-      final File file = getGeoLiteDb(offline, configuration.getFailOnNoOp());
+      final File file = getGeoLiteDb(getOffline(), configuration.getFailOnNoOp());
       if (!destDir.exists() && !destDir.mkdirs())
         throw new MojoExecutionException("Unable to mkdir " + destDir.getAbsolutePath());
 
@@ -195,6 +189,7 @@ public final class GeoLite2Mojo extends BaseMojo {
 
     final Resource resource = new Resource();
     resource.setDirectory(destDir.getAbsolutePath());
+    final MavenProject project = getProject();
     if (isInTestPhase())
       project.getTestResources().add(resource);
     else
